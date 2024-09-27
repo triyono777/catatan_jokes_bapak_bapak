@@ -7,8 +7,10 @@ class JokeProvider with ChangeNotifier {
   final JokeService _jokeService = JokeService();
   JokeText? _jokeText;
   JokeImage? _jokeImage;
+
   JokeText? get jokeText => _jokeText;
   JokeImage? get jokeImage => _jokeImage;
+
   void loadJoke() async {
     _jokeText = await _jokeService.fetchRandomJokeText();
     _jokeImage = await _jokeService.fetchRandomJokeImage();

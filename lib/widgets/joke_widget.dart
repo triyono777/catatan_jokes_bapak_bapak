@@ -18,7 +18,13 @@ class JokeWidget extends StatelessWidget {
       children: [
         Text(jokeText.text, style: TextStyle(fontSize: 16)),
         SizedBox(height: 8),
-        Image.network(jokeImage.url),
+        SizedBox(
+          height: 300,
+          child: Image.network(
+            jokeImage.url,
+            fit: BoxFit.contain,
+          ),
+        ),
         TextButton(
           onPressed: () => onRefresh(),
           child: Text('Refresh Jokes'),

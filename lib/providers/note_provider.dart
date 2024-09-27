@@ -5,7 +5,9 @@ import '../services/note_service.dart';
 class NoteProvider with ChangeNotifier {
   final NoteService _noteService = NoteService();
   List<Note> _notes = [];
+
   List<Note> get notes => _notes;
+
   void loadNotes() {
     _notes = _noteService.getNotes();
     notifyListeners();
@@ -16,8 +18,13 @@ class NoteProvider with ChangeNotifier {
     loadNotes();
   }
 
-  void deleteNote(int index) {
-    _noteService.deleteNote(index);
+  void updateNote(String id, Note note) {
+    _noteService.updateNote(id, note);
+    loadNotes();
+  }
+
+  void deleteNote(String id) {
+    _noteService.deleteNote(id);
     loadNotes();
   }
 }
